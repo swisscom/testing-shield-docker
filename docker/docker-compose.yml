@@ -2,10 +2,11 @@ version: '3'
 services:
   shield:
     build: .
-    image: shield:8.0.15
+    image: swisscomcloud/shield:8.0.15
   vault:
     build:
       context: ./vault
+    image: swisscomcloud/shield-vault
     container_name: vault
     expose:
       - 8200
@@ -14,6 +15,7 @@ services:
   core:
     build:
       context: ./core
+    image: swisscomcloud/shield-core
     container_name: core
     expose:
       - 8080
@@ -22,6 +24,7 @@ services:
   agent:
     build:
       context: ./agent
+    image: swisscomcloud/shield-agent
     container_name: agent
     ports:
       - 5444:5444
@@ -30,6 +33,7 @@ services:
   nginx:
     build:
       context: ./nginx
+    image: swisscomcloud/shield-nginx
     container_name: nginx
     ports:
       - 8443:443

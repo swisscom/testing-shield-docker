@@ -1,15 +1,23 @@
 .PHONY: all build certs clean down ps
 
+define create_folder_structure
+	@mkdir -p core/shield/data
+	@mkdir -p vault/vault/storage
+	@mkdir -p mariadb/db
+endef
+
 all:
 ifeq (,$(wildcard ./core/shield/id_rsa))
 	$(MAKE) certs
 endif
-	@mkdir -p core/shield/data
-	@mkdir -p vault/vault/storage
-	@mkdir -p mariadb/db
+	$(call create_folder_structure)
 	docker-compose up
 
 build:
+ifeq (,$(wildcard ./core/shield/id_rsa))
+	$(MAKE) certs
+endif
+	$(call create_folder_structure)
 	docker-compose build
 
 ps:
