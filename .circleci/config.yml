@@ -1,8 +1,6 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/classic:latest
     steps:
       - checkout
       - run: sudo apt-get update && sudo apt-get install make
