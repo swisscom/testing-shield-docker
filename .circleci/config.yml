@@ -2,10 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:stable-git
+      - image: circleci/classic:latest
     steps:
       - checkout
-      - run: apt-get update && apt-get install make
+      - run: sudo apt-get update && sudo apt-get install make
       - setup_remote_docker:
           version: 18.05.0-ce
       - run: cd docker && make build
