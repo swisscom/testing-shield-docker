@@ -1,0 +1,15 @@
+agent/agent/authorized_keys
+docker/agent/agent/CA.pem
+docker/agent/agent/authorized_keys
+docker/agent/agent/id_rsa
+docker/agent/agent/id_rsa.pub
+docker/core/shield/CA.key
+docker/core/shield/CA.pem
+docker/core/shield/id_rsa
+docker/core/shield/id_rsa.pub
+docker/nginx/nginx.crt
+docker/nginx/nginx.key
+docker/vault/vault/storage/*
+docker/vault/vault/vault.crt
+docker/vault/vault/vault.csr
+docker/vault/vault/vault.key

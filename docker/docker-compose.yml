@@ -1,0 +1,37 @@
+version: '3'
+services:
+  shield:
+    build: .
+    image: shield:8.0.15
+  vault:
+    build:
+      context: ./vault
+    container_name: vault
+    expose:
+      - 8200
+    volumes:
+      - ./vault/vault/storage:/vault/storage
+  core:
+    build:
+      context: ./core
+    container_name: core
+    expose:
+      - 8080
+    depends_on:
+      - vault
+  agent:
+    build:
+      context: ./agent
+    container_name: agent
+    ports:
+      - 5444:5444
+    depends_on:
+      - core
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - 8443:443
+    depends_on:
+      - core
