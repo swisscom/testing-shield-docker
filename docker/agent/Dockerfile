@@ -1,4 +1,4 @@
-FROM shield:8.0.15
+FROM swisscomcloud/shield:8.0.15
 RUN apt-get install -y -q mariadb-client
 WORKDIR /shield
 ADD agent /shield
